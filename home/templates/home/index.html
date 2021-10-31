@@ -1,0 +1,38 @@
+{% extends "base_template.html"%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-3 col-sm-1"></div>
+            <div class="col-6">
+                <ul class="list-group list-group-flush text-center">
+                    {% for word in words %}
+                    <li class="list-group-item">
+                        <div class="container row">
+                            <div class="col col-9">
+                                {{word.value}} --> {{word.translate}}
+                            </div>
+                            <div class="col col-3">
+                                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#translate_{{word.id}}" aria-expanded="false" aria-controls="translate_{{word.id}}">
+                                    развернуть
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="collapse" id="translate_{{word.id}}">
+                                    <br>
+                                    <div class="card card-body bg-light">
+                                        {{word.meaning}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+{% endblock %}
